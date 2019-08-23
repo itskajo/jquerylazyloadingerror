@@ -1,0 +1,35 @@
+.control-tabs{
+
+  &__actions{
+    background: white;
+    min-height: 40px;
+    border-bottom: 1px solid lightgray;
+
+    &-item {
+      margin: 2px 0 2px 10px;
+      cursor: pointer;
+      &-active {
+        color: white !important;
+      }
+
+      &:focus{
+        outline:none;
+      }
+    }
+
+    &-icon{
+      line-height: 1;
+      vertical-align: middle;
+      color: gray;
+      margin-right: 5px;
+    }
+
+    &-label{
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+      white-space: normal;
+    }
+
+  }
+}

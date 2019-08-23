@@ -1,0 +1,68 @@
+<ng-template
+  [ngIf]="!stretchedTabs"
+  [ngIfElse]="stretched"
+>
+  <mat-tab-group
+    [animationDuration]="animationDuration"
+    [backgroundColor]="backgroundColor"
+    [color]="color"
+    [disableRipple]="disableRipple"
+    [dynamicHeight]="dynamicHeight"
+    [headerPosition]="headerPosition"
+    [selectedIndex]="selectedIndex"
+    (animationDone)="onAnimationDone()"
+    (focusChange)="onFocusChange($event)"
+    (selectedIndexChange)="onSelectedIndexChange($event)"
+    (selectedTabChange)="onSelectedTabChange($event)"
+  >
+
+    <ng-content></ng-content>
+  </mat-tab-group>
+</ng-template>
+
+<ng-template #stretched>
+  <mat-tab-group
+    mat-stretch-tabs
+    [animationDuration]="animationDuration"
+    [backgroundColor]="backgroundColor"
+    [color]="color"
+    [disableRipple]="disableRipple"
+    [dynamicHeight]="dynamicHeight"
+    [headerPosition]="headerPosition"
+    [selectedIndex]="selectedIndex"
+    (animationDone)="onAnimationDone()"
+    (focusChange)="onFocusChange($event)"
+    (selectedIndexChange)="onSelectedIndexChange($event)"
+    (selectedTabChange)="onSelectedTabChange($event)"
+  >
+
+    <ng-content></ng-content>
+  </mat-tab-group>
+</ng-template>
+
+<div
+  class="control-tabs__actions"
+  id="ControlTabsActionContainer"
+>
+  <div class="">
+    <button
+      mat-button
+      class=" control-tabs__actions-item"
+      *ngFor="let item of actionItems"
+      [matTooltip]="item.tooltip"
+      [ngClass]="{'basf-primary-bg': item.active}"
+      (click)="onActionCall(actionItems.indexOf(item))"
+      [disabled]="item.disabled"
+      [id]="'actionButton' + actionItems.indexOf(item)"
+    >
+      <mat-icon
+        class="control-tabs__actions-icon"
+        [ngClass]="{'control-tabs__actions-item-active': item.active}"
+      >{{item.icon}}</mat-icon>
+      <span
+        class="control-tabs__actions-label"
+        [ngClass]="{'control-tabs__actions-item-active': item.active}"
+      >{{item.label}}</span>
+    </button>
+  </div>
+</div>
